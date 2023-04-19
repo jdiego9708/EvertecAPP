@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SISEvertec.APP.Views.ViewsHome.HomePage"
+    xmlns:viewModel="clr-namespace:SISEvertec.APP.ViewModels.VMHome"
+    xmlns:local="clr-namespace:SISEvertec.APP.Services"
+    x:DataType="viewModel:HomeViewModel"
+    Shell.NavBarIsVisible="False">
+    <VerticalStackLayout>
+        <ScrollView>
+            <Grid
+                Margin="20,0,20,0"
+                ColumnDefinitions="*,*,*,*"
+                RowDefinitions="350,50,70,70,70"
+                Padding="0,0,0,0"
+                RowSpacing="10">
+
+                <Image
+                    Grid.ColumnSpan="4"
+                    Grid.Row="0"
+                    HorizontalOptions="FillAndExpand"
+                    Source="imagenhome"
+                    VerticalOptions="FillAndExpand" />
+
+                <Label
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Margin="0,20,20,0"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="{Binding ConfigurationTextView}"
+                    VerticalOptions="Center" />
+
+                <BoxView
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"
+                    Margin="0,20,0,0"
+                    Color="Gray"
+                    HeightRequest="2"
+                    WidthRequest="200" />
+
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="0,0,20,0"
+                    FontSize="Small"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Start"
+                    Text="{Binding ThemeApplicationTextView}"
+                    VerticalOptions="Center" />
+
+                <Frame
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="Transparent">
+                    <Grid
+                        ColumnDefinitions="*,*,*,*"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+                        <Label
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            Text="{Binding ThemeLightTextView}">
+                            <Label.Triggers>
+                                <DataTrigger
+                                    TargetType="Label"
+                                    Binding="{Binding IsDarkMode}"
+                                    Value="True">
+                                    <Setter
+                                        Property="Text"
+                                        Value="{Binding ThemeDarkTextView}" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+
+                        <Switch
+                            Grid.Column="2"
+                            Grid.ColumnSpan="2"
+                            OnColor="{StaticResource PrimaryEvertecColor}"
+                            ThumbColor="{StaticResource PrimaryEvertecColor}"
+                            Margin="30,0,0,0"
+                            VerticalOptions="Center"
+                            HorizontalOptions="End"
+                            IsToggled="{Binding IsDarkMode, Mode=TwoWay}" />
+                    </Grid>
+                </Frame>
+
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="0,0,20,0"
+                    FontSize="Small"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Start"
+                    Text="{Binding ChangeLanguage}"
+                    LineBreakMode="WordWrap"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center" />
+
+                <Frame
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="Transparent">
+                    <Grid
+                        ColumnDefinitions="*,*,*,*"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+                        <Label
+                            FontAttributes="Bold"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            Grid.Row="0"
+                            FontSize="16"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            LineBreakMode="WordWrap"
+                            VerticalTextAlignment="Center"
+                            Text="{Binding Spanish}">
+                            <Label.Triggers>
+                                <DataTrigger
+                                    TargetType="Label"
+                                    Binding="{Binding IsSpanish}"
+                                    Value="False">
+                                    <Setter
+                                        Property="Text"
+                                        Value="{Binding English}" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Switch
+                            Grid.Column="2"
+                            Grid.ColumnSpan="2"
+                            OnColor="{StaticResource PrimaryEvertecColor}"
+                            ThumbColor="{StaticResource PrimaryEvertecColor}"
+                            Margin="30,0,0,0"
+                            VerticalOptions="Center"
+                            HorizontalOptions="End"
+                            IsToggled="{Binding IsSpanish, Mode=TwoWay}" />
+                    </Grid>
+                </Frame>
+
+                <Label
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="4"
+                    Margin="0,0,20,0"
+                    FontSize="Small"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="{Binding LastChangedTextView}"
+                    LineBreakMode="WordWrap"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    VerticalOptions="Center" />
+            </Grid>
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>

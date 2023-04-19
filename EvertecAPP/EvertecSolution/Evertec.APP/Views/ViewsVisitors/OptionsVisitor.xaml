@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SISEvertec.APP.Views.ViewsVisitors.OptionsVisitor"
+    xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+    Color="Transparent"
+    xmlns:viewModel="clr-namespace:SISEvertec.APP.ViewModels.VMVisitors"
+    x:DataType="viewModel:VisitorsViewModel">
+    <Frame
+        WidthRequest="350"
+        HeightRequest="300"
+        CornerRadius="40">
+        <Grid
+            ColumnDefinitions="*,*,*,*"
+            RowDefinitions="80,25,80"
+            Margin="0,0,0,0"
+            RowSpacing="10">
+
+            <Image
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                Grid.Row="0"
+                Source="everteclogo"
+                HeightRequest="80"
+                WidthRequest="140"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" />
+
+            <Label
+                FontSize="18"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.Row="1"
+                Text="Eliminar"
+                HorizontalOptions="FillAndExpand"
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold"
+                VerticalTextAlignment="Center"
+                VerticalOptions="FillAndExpand">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding DeleteVisitorCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Image
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.Row="2"
+                Source="deletemain"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                HeightRequest="80"
+                WidthRequest="80">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding DeleteVisitorCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Label
+                FontSize="18"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Grid.Row="1"
+                Text="Editar"
+                HorizontalOptions="FillAndExpand"
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold"
+                VerticalTextAlignment="Center"
+                VerticalOptions="FillAndExpand">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding EditVisitorCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Image
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Grid.Row="2"
+                Source="editmain"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                HeightRequest="80"
+                WidthRequest="80">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding EditVisitorCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+    </Frame>
+</mct:Popup>

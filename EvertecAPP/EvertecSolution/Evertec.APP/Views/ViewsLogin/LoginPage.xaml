@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SISEvertec.APP.Views.ViewsLogin.LoginPage"
+    xmlns:viewModel="clr-namespace:SISEvertec.APP.ViewModels.VMLogin"
+    x:DataType="viewModel:LoginViewModel"
+    Shell.NavBarIsVisible="False">
+    <ContentPage>
+        <ScrollView>
+            <Grid
+                Margin="0"
+                ColumnDefinitions="*,*,*"
+                RowDefinitions="350,*,*,*,*,40"
+                Padding="0,0,0,0"
+                RowSpacing="10">
+
+                <Image
+                    Grid.ColumnSpan="3"
+                    Grid.Row="0"
+                    HorizontalOptions="FillAndExpand"
+                    Source="imagenlogin"
+                    VerticalOptions="FillAndExpand" />
+
+                <StackLayout
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Margin="40,20,40,0"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3">
+                    <Label
+                        Margin="0,0,20,0"
+                        FontSize="Small"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Start"
+                        Text="Email"
+                        VerticalOptions="Start"
+                        TextColor="{StaticResource PrimaryTextEvertecColor}" />
+                    <Entry
+                        Keyboard="Email"
+                        FontSize="18"
+                        HorizontalOptions="FillAndExpand"
+                        Placeholder="Correo electrónico"
+                        PlaceholderColor="{StaticResource Gray500}"
+                        VerticalOptions="End"
+                        TextColor="{StaticResource PrimaryTextEvertecColor}"
+                        Text="{Binding UserName}"
+                        HorizontalTextAlignment="Center" />
+                </StackLayout>
+
+                <StackLayout
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Margin="40,0,40,0"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="3">
+                    <Grid
+                        ColumnDefinitions="*,*,*,*"
+                        RowDefinitions="*,*,*,*"
+                        RowSpacing="5">
+                        <Label
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="0"
+                            Grid.RowSpan="4"
+                            Margin="0,0,20,0"
+                            FontSize="Small"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Start"
+                            Text="Contraseña"
+                            VerticalOptions="Start"
+                            TextColor="{StaticResource PrimaryTextEvertecColor}" />
+
+                        <Entry
+                            Grid.Column="0"
+                            Grid.ColumnSpan="4"
+                            Grid.Row="1"
+                            Grid.RowSpan="4"
+                            Keyboard="Text"
+                            FontSize="18"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="Clave"
+                            PlaceholderColor="{StaticResource Gray500}"
+                            VerticalOptions="End"
+                            TextColor="{StaticResource PrimaryTextEvertecColor}"
+                            Text="{Binding Password}"
+                            IsPassword="{Binding IsPasswordVisible}"
+                            HorizontalTextAlignment="Center">
+                        </Entry>
+
+                        <Image
+                            Grid.Column="4"
+                            Grid.Row="1"
+                            Grid.RowSpan="4"
+                            HeightRequest="30"
+                            WidthRequest="30"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            Source="seepassmain">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding ChangePasswordVisibleCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                </StackLayout>
+
+                <Label
+                    Grid.ColumnSpan="3"
+                    Grid.Row="3"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="¿Olvidaste tu contraseña?"
+                    VerticalOptions="Center"
+                    TextColor="{StaticResource PrimaryTextEvertecColor}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding RememberPasswordCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Button
+                    Margin="20,0,20,0"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="4"
+                    BackgroundColor="{StaticResource PrimaryEvertecColor}"
+                    Command="{Binding LoginCommand}"
+                    CornerRadius="50"
+                    HorizontalOptions="FillAndExpand"
+                    FontSize="Medium"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    VerticalOptions="Start"
+                    Text="Iniciar sesión"
+                    TextColor="White" />
+
+                <Image
+                    Margin="0,0,0,40"
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    HeightRequest="40"
+                    Source="instamain"
+                    WidthRequest="40">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding InstagramCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Image
+                    Margin="0,0,0,40"
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    HeightRequest="40"
+                    Source="facebookmain"
+                    WidthRequest="40">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding FacebookCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Image
+                    Margin="0,0,0,40"
+                    Grid.Row="5"
+                    Grid.Column="2"
+                    HeightRequest="40"
+                    Source="googlemain"
+                    WidthRequest="40">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding GoogleCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </ScrollView>
+    </ContentPage>
+</Shell>

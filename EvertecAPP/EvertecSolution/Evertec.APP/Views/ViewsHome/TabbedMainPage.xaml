@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabBar
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SISEvertec.APP.Views.ViewsHome.TabbedMainPage"
+    xmlns:viewsMain="clr-namespace:SISEvertec.APP.Views.ViewsHome"
+    xmlns:viewsContacts="clr-namespace:SISEvertec.APP.Views.ViewsContacts"
+    xmlns:viewsClimate="clr-namespace:SISEvertec.APP.Views.ViewsClimate"
+    xmlns:viewsVisitors="clr-namespace:SISEvertec.APP.Views.ViewsVisitors">
+    <Tab
+        Title="Principal"
+        Icon="estadisticasmain">
+        <ShellContent
+            ContentTemplate="{DataTemplate viewsMain:HomePage}" />
+    </Tab>
+
+    <Tab
+        Title="Contactos"
+        Icon="contactsopcionmain">
+        <ShellContent
+            ContentTemplate="{DataTemplate viewsContacts:ContactsPage}" />
+    </Tab>
+
+    <Tab
+        Title="Clima"
+        Icon="climateopcionmain">
+        <ShellContent
+            ContentTemplate="{DataTemplate viewsClimate:ClimatePage}" />
+    </Tab>
+
+    <Tab
+        Title="Multimedia"
+        Icon="cameraopcionmain">
+        <ShellContent
+            ContentTemplate="{DataTemplate viewsVisitors:VisitorsPage}" />
+    </Tab>
+</TabBar>

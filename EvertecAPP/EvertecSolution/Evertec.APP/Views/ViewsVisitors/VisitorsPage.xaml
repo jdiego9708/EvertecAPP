@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SISEvertec.APP.Views.ViewsVisitors.VisitorsPage"
+    Shell.NavBarIsVisible="False"
+    xmlns:viewModel="clr-namespace:SISEvertec.APP.ViewModels.VMVisitors"
+    x:DataType="viewModel:VisitorsViewModel">
+    <RefreshView
+        Margin="20"
+        Command="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsRefreshing}"
+        RefreshColor="{StaticResource PrimaryEvertecColor}">
+        <CollectionView
+            x:Name="listVisitors"
+            EmptyView="No hay visitantes para mostrar"
+            ItemsSource="{Binding VisitorsViewList}"
+            Margin="20,0,20,0">
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    Orientation="Vertical"
+                    VerticalItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.Header>
+                <Grid
+                    Margin="0,10,0,0"
+                    ColumnDefinitions="*,*,*,*"
+                    RowDefinitions="30,50"
+                    RowSpacing="10">
+                    <Label
+                        HorizontalOptions="Start"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="4"
+                        FontAttributes="Bold"
+                        Text="{Binding InfoVisitors, StringFormat='Cámara | Visitantes {0}'}"
+                        FontSize="18"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        VerticalOptions="Center" />
+                    <Label
+                        HorizontalOptions="Center"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="3"
+                        FontAttributes="Bold"
+                        Text="Agregar visitante: "
+                        FontSize="16"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding AddVisitorCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
+                        HeightRequest="50"
+                        Source="addplusmain"
+                        WidthRequest="50"
+                        HorizontalOptions="End">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding AddVisitorCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            </CollectionView.Header>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate
+                    x:DataType="viewModel:VisitorItemViewModel">
+                    <Frame
+                        CornerRadius="30"
+                        HeightRequest="140"
+                        Margin="0,0,0,0"
+                        Padding="10,10,20,10"
+                        BackgroundColor="Transparent">
+                        
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding SelectVisitorCommand}" />
+                        </Frame.GestureRecognizers>
+
+                        <Grid
+                            ColumnDefinitions="110,*,*,*"
+                            RowDefinitions="30,*,*"
+                            RowSpacing="0">
+
+                            <Label
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="4"
+                                Grid.Row="0"
+                                HorizontalOptions="Start"
+                                Text="{Binding Name_visitor, StringFormat='Nombre: {0}'}" />
+
+                            <Frame
+                                HorizontalOptions="Center"
+                                Padding="0,0,0,0"
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                CornerRadius="50"
+                                HeightRequest="110"
+                                WidthRequest="110"
+                                BackgroundColor="Transparent"
+                                BorderColor="Transparent"
+                                VerticalOptions="Center">
+                                <Image
+                                    HorizontalOptions="FillAndExpand"
+                                    Source="{Binding ImageVisitor}"
+                                    VerticalOptions="FillAndExpand" />
+                            </Frame>
+
+                            <Label
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="3"
+                                Grid.Row="1"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center"
+                                HorizontalTextAlignment="Start"
+                                Text="{Binding Date_visitor, StringFormat='Fecha visita: {0:dd MMMM yyyy}'}">
+                            </Label>
+
+                            <Label
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="3"
+                                Grid.Row="2"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center"
+                                HorizontalTextAlignment="Start"
+                                Text="{Binding Date_visitor, StringFormat='Hora visita: {0:HH:mm tt}'}">
+                            </Label>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>
